@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card bg-primary" style="margin-top:20px;">
+    <div class="card-header">
+        <div class="float-start">
+            <p class="card-title" style="margin-top:5px">
+                <select id="CmbServidores" class="text-primary" onchange="LeAmbientes(this, this.value)"></select>
+            </p>
+        </div>
+        <div class="float-end" >
+            
+            <button id="BtnBanco" class="btn btn-primary" onclick="NavegaGrafena();">Grafena</button>
+            <button id="BtnBanco" class="btn btn-primary" onclick="GetAtualizacao();">Atualização Banco</button>
+        </div>
+    </div>
+    <div class="card-body">
+
+        <form autocomplete="off" method="post" action="">
+            <div class="table-responsive">
+                <table id="grdHistorico" class="table  table-bordered table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>AMBIENTE</th>
+                            <th>DIRETÓRIO</th>
+                            <th>URL</th>
+                            <th>VERSÃO</th>
+                            <th>ATUALIZAÇÃO</th>
+                            <th>INCLUSÃO</th>
+                            <th style="width:5%">HISTÓRICO</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalDetalhe" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header bg-warning">
+                <h4 class="modal-title text-primary">DETALHE AMBIENTES</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div id="DetAmb" style="height:500px"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ModalBanco" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header bg-warning">
+                <h4 class="modal-title text-primary">DETALHE ATUALIZAÇÃO</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="table-responsive" style="overflow-y:auto;height:400px">
+                    <table id="grdAtualizacao" class="table  table-bordered table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>DATABASE</th>
+                                <th>DATA ATUALIZAÇÃO</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Pages/Dash.js"></script>
+
+
