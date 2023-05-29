@@ -105,10 +105,10 @@ function Detalhe(ambiente) {
         divCol.classList.add('col-md-12');
 
         var divCard = document.createElement('div');
-        divCard.classList.add('card', 'bg-primary');
+        divCard.classList.add('card', 'bg-info');
 
         var divHeader = document.createElement('div');
-        divHeader.classList.add('card-header', 'bg-primary','text-bold');
+        divHeader.classList.add('card-header', 'bg-info','text-bold');
 
 
 
@@ -186,7 +186,11 @@ function Detalhe(ambiente) {
 }
 
 function GetAtualizacao() {
-    var carga = POST("Dash/GetAtualizacoesBanco", {})
+    if ((document.querySelector('#CmbServidores').value == 0) || (document.querySelector('#CmbServidores').value == null)) {
+          ShowOk("Selecione um serivdor!", "ATENÇÃO", "ERROR");
+        return;
+    }
+    var carga = POST("Dash/GetAtualizacoesBanco", { Dominio: document.querySelector("#CmbServidores").value });
     MontaAtualizacaoBanco(carga);
     $("#ModalBanco").modal('show');
 }
@@ -210,6 +214,7 @@ function MontaAtualizacaoBanco(carga) {
 
         ],
         location: false,
+        searching: false, 
         paging: false,
         info: false,
         responsive: true,

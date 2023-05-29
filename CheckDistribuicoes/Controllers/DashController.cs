@@ -26,9 +26,9 @@ namespace CheckDistribuicoes.Controllers
             return new JsonResult { Data = AmbientesBll.RetornaDeploy(NomeAmbiente,Dominio), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
         [HttpPost]
-        public JsonResult GetAtualizacoesBanco()
+        public JsonResult GetAtualizacoesBanco(string Dominio)
         {
-            return new JsonResult { Data = AtualizacaoBancoBll.GetAtualizacaoBancos(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = AtualizacaoBancoBll.GetAtualizacaoBancos(Dominio), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
         [HttpPost]
 
